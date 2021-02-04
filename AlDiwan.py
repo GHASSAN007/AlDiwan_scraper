@@ -35,10 +35,12 @@ for link in links :
     line = soup.find("p" , {"class" , "d-inline-block px-2 mt-0 mb-1 poem-control main-color"})
     poetries.append(poetry.text)
     writers.append(writer.text)
-    if type(line) == str:
+    try :
         lines.append(line.text)
-    else :
-        continue
+    except AttributeError: 
+        print("TypeError: Check list of indices")
+        
+
 
 data = [urls , poetry_titles , poetries , writers , lines]
 exported_data = zip_longest(*data)
